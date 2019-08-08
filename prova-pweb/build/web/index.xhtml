@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Sessão da Tarde</title>
+        </f:facet>
+    </h:head>
+    
+    <h:body>
+        <h3><center>SESSÃO DA TARDE DO IFBA</center></h3>
+        <h3><center>CURSO DE ADS</center></h3>
+        <h3><center>SALVADOR, AGOSTO DE 2019 -IFBA</center></h3>
+        
+        <p:growl id="msgGrowl" showDetail="true" sticky="false"/>
+        
+        <div align="center">
+        <h:form>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    <h3><center>FORMULÁRIO</center></h3>
+                </f:facet>
+                <h:outputText value="Para:" />
+                <p:inputText id="receiver" value="#{formBean.form.receiver}" style="text-align:center" required="true"></p:inputText>
+
+                <h:outputText value="Telefone:" />
+                <p:inputText id="telephoneReceiver" value="#{formBean.form.telephoneReceiver}" style="text-align:center" required="true"></p:inputText>
+
+                <h:outputText value="E-mail:" />
+                <p:inputText id="emailReceiver" value="#{formBean.form.emailReceiver}" style="text-align:center" required="true"></p:inputText>
+            </p:panelGrid>
+            
+            <br>
+            <p:panelGrid columns="2">
+                <h:outputText value="De:" />
+                <p:inputText id="sender" value="#{formBean.form.sender}" style="text-align:center" required="true"></p:inputText>
+
+                <h:outputText value="Telefone:" />
+                <p:inputText id="telephoneSender" value="#{formBean.form.telephoneSender}" style="text-align:center" required="true"></p:inputText>
+
+                <h:outputText value="E-mail:" />
+                <p:inputText id="emailSender" value="#{formBean.form.emailSender}" style="text-align:center" required="true"></p:inputText>
+
+                <h:outputText value="Data:" />
+                <p:calendar id="date" value="#{formBean.form.date}" pattern="dd/MM/yyyy"/>
+            </p:panelGrid>
+            </br>
+            <p:commandButton value="Enviar" style="text-align:center" actionListener="#{formBean.save()}" update="msgGrowl"/>
+            <p:commandButton value="Procurar por Remetente" style="text-align:center" actionListener="#{formBean.findBySender()}" update="msgGrowl"/>
+            <p:linkButton outcome="allForms" value="Listar Formulários" style="margin-right:20px;"/>
+        </h:form>
+        </div>
+    </h:body>
+    
+</html>
+
